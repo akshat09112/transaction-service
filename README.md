@@ -18,7 +18,7 @@ Install mysql
 5. Create user: CREATE USER '<user_name>'@'localhost' IDENTIFIED BY '<password>';
 6. GRANT ALL PRIVILEGES ON <db_name>.* TO '<user_name>'@'localhost';
 7. Create user table: CREATE TABLE user (user_id VARCHAR(255) NOT NULL,balance DOUBLE,PRIMARY KEY (user_id));
-8. Create transaction table: CREATE TABLE transaction (transaction_id VARCHAR(255) NOT NULL,merchant VARCHAR(255),user_id VARCHAR(255) NOT NULL,transaction_type ENUM('CREDIT', 'DEBIT') NOT NULL,amount DOUBLE,PRIMARY KEY (transaction_id),FOREIGN KEY (user_id) REFERENCES user(user_id));
+8. Create transaction table: CREATE TABLE transaction (transaction_id VARCHAR(255) NOT NULL,merchant VARCHAR(255),user_id VARCHAR(255) NOT NULL,transaction_type ENUM('CREDIT', 'DEBIT') NOT NULL,timestamp DATE NOT NULL,amount DOUBLE,PRIMARY KEY (transaction_id),FOREIGN KEY (user_id) REFERENCES user(user_id));
 
 Running the application
 
