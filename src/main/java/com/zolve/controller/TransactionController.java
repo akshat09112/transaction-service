@@ -6,7 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
+
+import static com.mysql.cj.util.TimeUtil.DATE_FORMATTER;
 
 @RestController
 public class TransactionController {
@@ -27,5 +30,10 @@ public class TransactionController {
     @GetMapping("/users/all/balances")
     public ResponseEntity<List<User>> getBalancesForUsers() {
         return ResponseEntity.ok(service.getAllUsersBalance());
+    }
+
+    @GetMapping("/user/{userId}/balance/{date}")
+    public ResponseEntity<Double> getUserBalanceAsOfDate(@PathVariable String userId, @PathVariable String date) {
+        return ResponseEntity.ok(service.getUserBalanceAsOfDate(userId, date));
     }
 }

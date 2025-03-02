@@ -3,6 +3,8 @@ package com.zolve.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.time.LocalDate;
+
 @Data
 @Entity
 @Table(name = "transaction")
@@ -48,6 +50,14 @@ public class Transaction {
         this.amount = amount;
     }
 
+    public LocalDate getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(LocalDate timestamp) {
+        this.timestamp = timestamp;
+    }
+
     public Transaction() {
     }
 
@@ -58,4 +68,5 @@ public class Transaction {
     @Enumerated(EnumType.STRING)
     private TransactionType transactionType;
     private Double amount;
+    private LocalDate timestamp;
 }

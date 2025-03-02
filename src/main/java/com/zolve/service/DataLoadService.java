@@ -14,7 +14,10 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.Objects;
+
+import static com.mysql.cj.util.TimeUtil.DATE_FORMATTER;
 
 @Service
 public class DataLoadService {
@@ -54,6 +57,7 @@ public class DataLoadService {
                     TransactionType txnType = TransactionType.valueOf(fields[2].trim().toUpperCase());
                     String txnId = fields[4].trim();
                     String merchant = fields[3].trim();
+                    LocalDate txnDate = LocalDate.parse(fields[5], DATE_FORMATTER);
                     Transaction transaction = transactionRepository.findById(txnId).orElse(null);
                     if(Objects.nonNull(transaction)){
                         continue;
@@ -65,6 +69,7 @@ public class DataLoadService {
                     transaction.setMerchant(merchant);
                     transaction.setUserId(userId);
                     transaction.setTransactionType(txnType);
+                    transaction.setTimestamp(txnDate);
 
                     if (txnType.equals(TransactionType.DEBIT)) {
                         amount = -amount;

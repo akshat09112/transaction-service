@@ -1,5 +1,5 @@
-user_id,amount,txn_type,merchant,txn_id
-u1234,24.0,DEBIT,kirana,t12344
-u983,45,CREDIT,UCB,t234
-u983,67,DEBIT,JDH,t345
-u983,89,CREDIT,HFHF,T234
+user_id,amount,txn_type,merchant,txn_id,date
+u1234,24.0,DEBIT,kirana,t12344,2024-10-09
+u983,45,CREDIT,UCB,t234,2025-02-09
+u983,67,DEBIT,JDH,t345,2023-09-08
+u983,89,CREDIT,HFHF,T234,2022-09-12
